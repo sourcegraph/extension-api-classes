@@ -49,7 +49,6 @@
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
-    "@sourcegraph/extension-api-types": "^2.0.0",
     "@sourcegraph/prettierrc": "^2.2.0",
     "@sourcegraph/tsconfig": "^4.0.0",
     "@sourcegraph/tslint-config": "^13.1.0",
@@ -68,5 +67,8 @@
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
     }
+  },
+  "dependencies": {
+    "@sourcegraph/extension-api-types": "^2.0.0"
   }
 }
