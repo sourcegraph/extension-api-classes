@@ -1,0 +1,72 @@
+{
+  "name": "@sourcegraph/extension-api-classes",
+  "description": "Classes used by the Sourcegraph extension API",
+  "version": "0.0.0-DEVELOPMENT",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sourcegraph/extension-api-classes.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "nyc mocha",
+    "semantic-release": "semantic-release",
+    "prettier": "prettier '**/{*.{js?(on),ts?(x),scss},.*.js?(on)}' --write --list-different",
+    "prettier-check": "npm run prettier -- --write=false",
+    "tslint": "tslint -c tslint.json -p tsconfig.json './src/*.ts?(x)' './*.ts?(x)'",
+    "build": "tsc -p .",
+    "watch": "tsc -p . -w"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "mocha": {
+    "require": "ts-node/register",
+    "spec": "src/**/*.test.ts",
+    "ui": "tdd"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts?(x)"
+    ],
+    "exclude": [
+      "**/*.test.ts?(x)"
+    ],
+    "extension": [
+      ".tsx",
+      ".ts"
+    ]
+  },
+  "peerDependencies": {
+    "sourcegraph": "*"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "@sourcegraph/extension-api-types": "^2.0.0",
+    "@sourcegraph/prettierrc": "^2.2.0",
+    "@sourcegraph/tsconfig": "^4.0.0",
+    "@sourcegraph/tslint-config": "^13.1.0",
+    "@types/mocha": "^5.2.6",
+    "husky": "^2.1.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.0.0",
+    "prettier": "^1.17.0",
+    "semantic-release": "^15.13.3",
+    "sourcegraph": "^23.0.0",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
+    }
+  }
+}
