@@ -8,7 +8,7 @@ export const MarkupKind: typeof sourcegraph.MarkupKind = {
     Markdown: 'markdown' as sourcegraph.MarkupKind.Markdown,
 } as const
 
-export const NotificationType = {
+export const NotificationType: typeof sourcegraph.NotificationType = {
     Error: 1,
     Warning: 2,
     Info: 3,
