@@ -14,16 +14,8 @@ export class Range implements sourcegraph.Range {
         return Position.isPosition((thing as Range).start) && Position.isPosition(thing.end as Range)
     }
 
-    protected _start: Position
-    protected _end: Position
-
-    public get start(): sourcegraph.Position {
-        return this._start
-    }
-
-    public get end(): sourcegraph.Position {
-        return this._end
-    }
+    public readonly start: Position
+    public readonly end: Position
 
     constructor(start: sourcegraph.Position, end: sourcegraph.Position)
     constructor(startLine: number, startColumn: number, endLine: number, endColumn: number)
@@ -54,23 +46,23 @@ export class Range implements sourcegraph.Range {
         }
 
         if (start.isBefore(end)) {
-            this._start = start
-            this._end = end
+            this.start = start
+            this.end = end
         } else {
-            this._start = end
-            this._end = start
+            this.start = end
+            this.end = start
         }
     }
 
     public contains(positionOrRange: sourcegraph.Position | sourcegraph.Range): boolean {
         if (positionOrRange instanceof Range) {
-            return this.contains(positionOrRange._start) && this.contains(positionOrRange._end)
+            return this.contains(positionOrRange.start) && this.contains(positionOrRange.end)
         }
         if (positionOrRange instanceof Position) {
-            if (positionOrRange.isBefore(this._start)) {
+            if (positionOrRange.isBefore(this.start)) {
                 return false
             }
-            if (this._end.isBefore(positionOrRange)) {
+            if (this.end.isBefore(positionOrRange)) {
                 return false
             }
             return true
@@ -79,12 +71,12 @@ export class Range implements sourcegraph.Range {
     }
 
     public isEqual(other: sourcegraph.Range): boolean {
-        return this._start.isEqual(other.start) && this._end.isEqual(other.end)
+        return this.start.isEqual(other.start) && this.end.isEqual(other.end)
     }
 
     public intersection(other: sourcegraph.Range): sourcegraph.Range | undefined {
-        const start = Position.max(other.start, this._start)
-        const end = Position.min(other.end, this._end)
+        const start = Position.max(other.start, this.start)
+        const end = Position.min(other.end, this.end)
         if (start.isAfter(end)) {
             // this happens when there is no overlap:
             // |-----|
@@ -101,17 +93,17 @@ export class Range implements sourcegraph.Range {
         if (other.contains(this)) {
             return other
         }
-        const start = Position.min(other.start, this._start)
+        const start = Position.min(other.start, this.start)
         const end = Position.max(other.end, this.end)
         return new Range(start, end)
     }
 
     public get isEmpty(): boolean {
-        return this._start.isEqual(this._end)
+        return this.start.isEqual(this.end)
     }
 
     public get isSingleLine(): boolean {
-        return this._start.line === this._end.line
+        return this.start.line === this.end.line
     }
 
     public with(start?: sourcegraph.Position, end?: sourcegraph.Position): sourcegraph.Range
@@ -120,6 +112,7 @@ export class Range implements sourcegraph.Range {
         startOrChange: sourcegraph.Position | undefined | { start?: sourcegraph.Position; end?: sourcegraph.Position },
         end: sourcegraph.Position = this.end
     ): sourcegraph.Range {
+        // tslint:disable-next-line: strict-type-predicates
         if (startOrChange === null || end === null) {
             throw illegalArgument()
         }
@@ -134,20 +127,20 @@ export class Range implements sourcegraph.Range {
             end = startOrChange.end || this.end
         }
 
-        if (start.isEqual(this._start) && end.isEqual(this.end)) {
+        if (start.isEqual(this.start) && end.isEqual(this.end)) {
             return this
         }
         return new Range(start, end)
     }
 
     public toJSON(): any {
-        return { start: this._start.toJSON(), end: this._end.toJSON() }
+        return { start: this.start.toJSON(), end: this.end.toJSON() }
     }
 
     public toPlain(): clientType.Range {
         return {
-            start: { line: this._start.line, character: this._start.character },
-            end: { line: this._end.line, character: this._end.character },
+            start: { line: this.start.line, character: this.start.character },
+            end: { line: this.end.line, character: this.end.character },
         }
     }
 

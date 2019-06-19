@@ -19,17 +19,8 @@ export class Selection extends Range implements sourcegraph.Selection {
         )
     }
 
-    private _anchor: Position
-
-    public get anchor(): Position {
-        return this._anchor
-    }
-
-    private _active: Position
-
-    public get active(): Position {
-        return this._active
-    }
+    public readonly anchor: Position
+    public readonly active: Position
 
     constructor(anchor: Position, active: Position)
     constructor(anchorLine: number, anchorColumn: number, activeLine: number, activeColumn: number)
@@ -61,12 +52,12 @@ export class Selection extends Range implements sourcegraph.Selection {
 
         super(anchor, active)
 
-        this._anchor = anchor
-        this._active = active
+        this.anchor = anchor
+        this.active = active
     }
 
     public get isReversed(): boolean {
-        return this._anchor === this._end
+        return this.anchor === this.end
     }
 
     public toJSON(): any {
