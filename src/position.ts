@@ -46,46 +46,33 @@ export class Position implements sourcegraph.Position {
         return false
     }
 
-    private _line: number
-    private _character: number
-
-    public get line(): number {
-        return this._line
-    }
-
-    public get character(): number {
-        return this._character
-    }
-
-    constructor(line: number, character: number) {
+    constructor(public readonly line: number, public readonly character: number) {
         if (line < 0) {
             throw illegalArgument('line must be non-negative')
         }
         if (character < 0) {
             throw illegalArgument('character must be non-negative')
         }
-        this._line = line
-        this._character = character
     }
 
     public isBefore(other: sourcegraph.Position): boolean {
-        if (this._line < other.line) {
+        if (this.line < other.line) {
             return true
         }
-        if (other.line < this._line) {
+        if (other.line < this.line) {
             return false
         }
-        return this._character < other.character
+        return this.character < other.character
     }
 
     public isBeforeOrEqual(other: sourcegraph.Position): boolean {
-        if (this._line < other.line) {
+        if (this.line < other.line) {
             return true
         }
-        if (other.line < this._line) {
+        if (other.line < this.line) {
             return false
         }
-        return this._character <= other.character
+        return this.character <= other.character
     }
 
     public isAfter(other: sourcegraph.Position): boolean {
@@ -97,21 +84,21 @@ export class Position implements sourcegraph.Position {
     }
 
     public isEqual(other: sourcegraph.Position): boolean {
-        return this._line === other.line && this._character === other.character
+        return this.line === other.line && this.character === other.character
     }
 
     public compareTo(other: sourcegraph.Position): number {
-        if (this._line < other.line) {
+        if (this.line < other.line) {
             return -1
         }
-        if (this._line > other.line) {
+        if (this.line > other.line) {
             return 1
         }
         // equal line
-        if (this._character < other.character) {
+        if (this.character < other.character) {
             return -1
         }
-        if (this._character > other.character) {
+        if (this.character > other.character) {
             return 1
         }
         // equal line and character
