@@ -15,3 +15,7 @@ export const NotificationType: typeof sourcegraph.NotificationType = {
     Log: 4,
     Success: 5,
 } as const
+
+export const ChecklistScope: typeof sourcegraph.ChecklistScope = {
+    Global: 'global' as sourcegraph.ChecklistScope.Global,
+} as const
