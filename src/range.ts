@@ -112,6 +112,7 @@ export class Range implements sourcegraph.Range {
         startOrChange: sourcegraph.Position | undefined | { start?: sourcegraph.Position; end?: sourcegraph.Position },
         end: sourcegraph.Position = this.end
     ): sourcegraph.Range {
+        // tslint:disable-next-line: strict-type-predicates
         if (startOrChange === null || end === null) {
             throw illegalArgument()
         }
