@@ -60,7 +60,7 @@
     "semantic-release": "^15.13.3",
     "sourcegraph": "^24.0.0",
     "ts-node": "^8.1.0",
-    "tslint": "^6.1.0",
+    "tslint": "^6.1.1",
     "typescript": "^3.4.5"
   },
   "husky": {
