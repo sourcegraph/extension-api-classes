@@ -52,7 +52,7 @@
     "@sourcegraph/prettierrc": "^2.2.0",
     "@sourcegraph/tsconfig": "^4.0.1",
     "@sourcegraph/tslint-config": "^13.4.0",
-    "@types/mocha": "5.2.7",
+    "@types/mocha": "7.0.2",
     "husky": "^2.1.0",
     "mocha": "^6.1.4",
     "nyc": "^14.1.0",
