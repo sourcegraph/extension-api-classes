@@ -5083,10 +5083,10 @@ source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.1:
   resolved "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
-sourcegraph@^24.5.0:
-  version "24.5.0"
-  resolved "https://registry.yarnpkg.com/sourcegraph/-/sourcegraph-24.5.0.tgz#5ee53b1c933db99addfc801f958ce753afa850c3"
-  integrity sha512-VQw73xafvfZZkjNqJY0kZEXexHRbqut60ed/guDlncdZJwf6zr7jQXeqh3p5v1VH09ef23758s6u6Fqbqgmt9Q==
+sourcegraph@^24.6.0:
+  version "24.6.0"
+  resolved "https://registry.yarnpkg.com/sourcegraph/-/sourcegraph-24.6.0.tgz#d6343a0a52c2e3c20a3d7bbcadde712bbdf4a931"
+  integrity sha512-FEmuGVRcSqMtE5DItZcDa1ylm7FykcswIN6M6xa0vFbyLv6INYxjGYOGq/WlH4/AUQC0abmaysPXlyJRkGgMyg==
 
 spawn-error-forwarder@~1.0.0:
   version "1.0.0"
