@@ -15,3 +15,9 @@ export const NotificationType: typeof sourcegraph.NotificationType = {
     Log: 4,
     Success: 5,
 } as const
+
+export const DocumentHighlightKind: typeof sourcegraph.DocumentHighlightKind = {
+    Text: 'text' as sourcegraph.DocumentHighlightKind.Text,
+    Read: 'read' as sourcegraph.DocumentHighlightKind.Read,
+    Write: 'write' as sourcegraph.DocumentHighlightKind.Write,
+}
