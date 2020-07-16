@@ -1,5 +1,4 @@
 /* istanbul ignore file */
-// tslint:disable: no-object-literal-type-assertion https://github.com/palantir/tslint/issues/4628
 
 import * as sourcegraph from 'sourcegraph'
 

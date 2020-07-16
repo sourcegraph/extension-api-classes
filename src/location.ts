@@ -4,7 +4,7 @@ import { Range } from './range'
 import { isURL } from './url'
 
 export class Location implements sourcegraph.Location {
-    public static isLocation(thing: any): thing is sourcegraph.Location {
+    public static isLocation(thing: unknown): thing is sourcegraph.Location {
         if (thing instanceof Location) {
             return true
         }
@@ -24,7 +24,7 @@ export class Location implements sourcegraph.Location {
         } else if (rangeOrPosition instanceof Position) {
             this.range = new Range(rangeOrPosition, rangeOrPosition)
         } else {
-            throw new Error('Illegal argument')
+            throw new TypeError('Illegal argument')
         }
     }
 

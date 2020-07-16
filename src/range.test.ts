@@ -76,49 +76,49 @@ suite('Range', () => {
 
     test('intersection', () => {
         const range = new Range(1, 1, 2, 11)
-        let res: sourcegraph.Range | undefined
+        let intersection: sourcegraph.Range | undefined
 
-        res = range.intersection(range)
-        assert.strictEqual(res && res.start.line, 1)
-        assert.strictEqual(res && res.start.character, 1)
-        assert.strictEqual(res && res.end.line, 2)
-        assert.strictEqual(res && res.end.character, 11)
+        intersection = range.intersection(range)
+        assert.strictEqual(intersection?.start.line, 1)
+        assert.strictEqual(intersection?.start.character, 1)
+        assert.strictEqual(intersection?.end.line, 2)
+        assert.strictEqual(intersection?.end.character, 11)
 
-        res = range.intersection(new Range(2, 12, 4, 0))
-        assert.strictEqual(res, undefined)
+        intersection = range.intersection(new Range(2, 12, 4, 0))
+        assert.strictEqual(intersection, undefined)
 
-        res = range.intersection(new Range(0, 0, 1, 0))
-        assert.strictEqual(res, undefined)
+        intersection = range.intersection(new Range(0, 0, 1, 0))
+        assert.strictEqual(intersection, undefined)
 
-        res = range.intersection(new Range(0, 0, 1, 1))
-        assert(res && res.isEmpty)
-        assert.strictEqual(res && res.start.line, 1)
-        assert.strictEqual(res && res.start.character, 1)
+        intersection = range.intersection(new Range(0, 0, 1, 1))
+        assert(intersection?.isEmpty)
+        assert.strictEqual(intersection?.start.line, 1)
+        assert.strictEqual(intersection?.start.character, 1)
 
-        res = range.intersection(new Range(2, 11, 61, 1))
-        assert(res && res.isEmpty)
-        assert.strictEqual(res && res.start.line, 2)
-        assert.strictEqual(res && res.start.character, 11)
+        intersection = range.intersection(new Range(2, 11, 61, 1))
+        assert(intersection?.isEmpty)
+        assert.strictEqual(intersection?.start.line, 2)
+        assert.strictEqual(intersection?.start.character, 11)
 
         assert.throws(() => range.intersection(null as any))
         assert.throws(() => range.intersection(undefined as any))
     })
 
     test('union', () => {
-        let ran1 = new Range(0, 0, 5, 5)
-        assert(ran1.union(new Range(0, 0, 1, 1)) === ran1)
+        let range1 = new Range(0, 0, 5, 5)
+        assert(range1.union(new Range(0, 0, 1, 1)) === range1)
 
-        let res: sourcegraph.Range
-        res = ran1.union(new Range(2, 2, 9, 9))
-        assert(res.start === ran1.start)
-        assert.strictEqual(res.end.line, 9)
-        assert.strictEqual(res.end.character, 9)
+        let union: sourcegraph.Range
+        union = range1.union(new Range(2, 2, 9, 9))
+        assert(union.start === range1.start)
+        assert.strictEqual(union.end.line, 9)
+        assert.strictEqual(union.end.character, 9)
 
-        ran1 = new Range(2, 1, 5, 3)
-        res = ran1.union(new Range(1, 0, 4, 2))
-        assert(res.end === ran1.end)
-        assert.strictEqual(res.start.line, 1)
-        assert.strictEqual(res.start.character, 0)
+        range1 = new Range(2, 1, 5, 3)
+        union = range1.union(new Range(1, 0, 4, 2))
+        assert(union.end === range1.end)
+        assert.strictEqual(union.start.line, 1)
+        assert.strictEqual(union.start.character, 0)
     })
 
     test('with', () => {
@@ -135,23 +135,23 @@ suite('Range', () => {
         assert(range.with({ end: range.end }) === range)
         assert(range.with({ end: new Position(2, 11) }) === range)
 
-        let res = range.with(undefined, new Position(9, 8))
-        assert.strictEqual(res.end.line, 9)
-        assert.strictEqual(res.end.character, 8)
-        assert.strictEqual(res.start.line, 1)
-        assert.strictEqual(res.start.character, 1)
+        let copy = range.with(undefined, new Position(9, 8))
+        assert.strictEqual(copy.end.line, 9)
+        assert.strictEqual(copy.end.character, 8)
+        assert.strictEqual(copy.start.line, 1)
+        assert.strictEqual(copy.start.character, 1)
 
-        res = range.with({ end: new Position(9, 8) })
-        assert.strictEqual(res.end.line, 9)
-        assert.strictEqual(res.end.character, 8)
-        assert.strictEqual(res.start.line, 1)
-        assert.strictEqual(res.start.character, 1)
+        copy = range.with({ end: new Position(9, 8) })
+        assert.strictEqual(copy.end.line, 9)
+        assert.strictEqual(copy.end.character, 8)
+        assert.strictEqual(copy.start.line, 1)
+        assert.strictEqual(copy.start.character, 1)
 
-        res = range.with({ end: new Position(9, 8), start: new Position(2, 3) })
-        assert.strictEqual(res.end.line, 9)
-        assert.strictEqual(res.end.character, 8)
-        assert.strictEqual(res.start.line, 2)
-        assert.strictEqual(res.start.character, 3)
+        copy = range.with({ end: new Position(9, 8), start: new Position(2, 3) })
+        assert.strictEqual(copy.end.line, 9)
+        assert.strictEqual(copy.end.character, 8)
+        assert.strictEqual(copy.start.line, 2)
+        assert.strictEqual(copy.start.character, 3)
 
         assert.throws(() => range.with(null as any))
         assert.throws(() => range.with(undefined, null as any))

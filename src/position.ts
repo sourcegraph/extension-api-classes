@@ -9,9 +9,9 @@ export class Position implements sourcegraph.Position {
         if (result === undefined) {
             return undefined
         }
-        for (const p of positions) {
-            if (p.isBefore(result)) {
-                result = p
+        for (const position of positions) {
+            if (position.isBefore(result)) {
+                result = position
             }
         }
         return result
@@ -24,9 +24,9 @@ export class Position implements sourcegraph.Position {
         if (result === undefined) {
             return undefined
         }
-        for (const p of positions) {
-            if (p.isAfter(result)) {
-                result = p
+        for (const position of positions) {
+            if (position.isAfter(result)) {
+                result = position
             }
         }
         return result
