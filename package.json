@@ -54,7 +54,7 @@
     "@sourcegraph/tsconfig": "^4.0.1",
     "@types/mocha": "7.0.2",
     "eslint": "^7.21.0",
-    "husky": "^2.1.0",
+    "husky": "^5.2.0",
     "mocha": "^6.1.4",
     "nyc": "^14.1.0",
     "prettier": "^2.2.1",
