@@ -52,7 +52,7 @@
     "@sourcegraph/eslint-config": "^0.23.0",
     "@sourcegraph/prettierrc": "^2.2.0",
     "@sourcegraph/tsconfig": "^4.0.1",
-    "@types/mocha": "7.0.2",
+    "@types/mocha": "8.2.2",
     "eslint": "^7.28.0",
     "husky": "^2.1.0",
     "mocha": "^6.1.4",
