@@ -50,7 +50,7 @@ export class Range implements sourcegraph.Range {
         }
 
         if (!start || !end) {
-            throw new Error('Invalid arguments')
+            throw new Error('Invalid arguments: make sure they are numbers or Points')
         }
 
         if (start.isBefore(end)) {
