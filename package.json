@@ -58,7 +58,7 @@
     "mocha": "^9.2.2",
     "nyc": "^14.1.0",
     "prettier": "^2.6.2",
-    "semantic-release": "^15.13.3",
+    "semantic-release": "^17.2.3",
     "sourcegraph": "^25.6.0",
     "ts-node": "^8.1.0",
     "typescript": "^3.9.6"
