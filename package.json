@@ -44,7 +44,7 @@
     ]
   },
   "peerDependencies": {
-    "sourcegraph": ">=25.6.0"
+    "sourcegraph": ">=25.7.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
@@ -59,7 +59,7 @@
     "nyc": "^14.1.0",
     "prettier": "^2.7.1",
     "semantic-release": "^15.13.3",
-    "sourcegraph": "^25.6.0",
+    "sourcegraph": "^25.7.0",
     "ts-node": "^8.1.0",
     "typescript": "^3.9.6"
   },
